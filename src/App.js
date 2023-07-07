@@ -20,6 +20,7 @@ function App() {
   const { data, fetchError, isLoading } = useAxiosFetch('http://localhost:3500/posts');
   
   useEffect(() => {
+    JSON.parse(localStorage.getItem('New Media'))
     setPosts(data);
   }, [data,setPosts])
 

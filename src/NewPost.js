@@ -23,6 +23,7 @@ const NewPost = () => {
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = { id, title: postTitle, datetime, body: postBody };
     savePost(newPost);
+    localStorage.savePost("new media",JSON.stringify(newPost))
     navigate('/');
 }
 
