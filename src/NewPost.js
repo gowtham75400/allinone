@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import  {useNavigate } from "react-router-dom";
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import { format } from 'date-fns';
@@ -16,6 +16,9 @@ const NewPost = () => {
   const setPostTitle = useStoreActions((actions) => actions.setPostTitle);
   const setPostBody = useStoreActions((actions) => actions.setPostBody);
 
+  useEffect(() => {
+    JSON.parse(localStorage.getItem('new media'))
+  }, [])
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,8 +26,8 @@ const NewPost = () => {
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');
     const newPost = { id, title: postTitle, datetime, body: postBody };
     savePost(newPost);
-    localStorage.savePost("new media",JSON.stringify(newPost))
-    navigate('/');
+    navigate('/')
+    
 }
 
   return (
